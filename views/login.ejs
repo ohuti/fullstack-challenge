@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Login - Fullstack Challenge</title>
+  </head>
+  <body class="log_body">
+		<form action="/login" method="POST">
+      <div class = 'container'>
+        <div align="center"><h1>Account Login</h1></div>
+		    <input type="text" name="email" placeholder="E-mail" required>
+		    <input type="password" name="password" placeholder="Password" required>
+		    <button class="log_button" type="submit">Login</button>
+        <div align="center">Doesn't have an account? <a href=/signup>Sign Up!</a></div>
+      </div>
+    </form>
+    <% if(message) { %>
+      <p>
+        <label style="color:Red"><%= message %></label>
+      </p>
+    <%}%>
+  </body>
+</html>

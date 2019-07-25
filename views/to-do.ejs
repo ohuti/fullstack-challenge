@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>To-do - Fullstack Challenge</title>
+  </head>
+  <body class="crud_body">
+    <div class="tab">
+      <button class="tab_button" onclick="openTask('Create')">Create</button>
+      <button class="tab_button" onclick="openTask('Update')">Update</button>
+      <button class="tab_button" onclick="openTask('Delete')">Delete</button>
+      <form action="/logout" method="post">
+        <button class="logout_button" type="submit">Logout</button>
+      </form>
+      <h7 class="tab_item">Welcome, <%= username %>!</h7>
+    </div>
+    <div id="Create" class="task">
+      <h2>Create task</h2>
+      <form action="/create" method="post">
+        <input type="textTask" name='task' placeholder="Task" required>
+        <button class="taskButton">Create Task</button>
+      </form>
+    </div>
+    <div id="Update" class="task" style="display:none">
+      <h2>Update task</h2>
+      <form action="/update" method="post">
+        <input type="textId" name="id" placeholder="Task Id" required>
+        <input type="textTask" name="task" placeholder="Task" required>
+        <button class="taskButton">Update Task</button>
+      </form>
+    </div>
+    <div id="Delete" class="task" style="display:none">
+      <h2>Delete task</h2>
+      <form action="/delete" method="post">
+        <input type="textId" name="id" placeholder="Task Id" required>
+        <button class="taskButton">Delete Task</button>
+      </form>
+    </div>
+      <table align="center">
+        <tr>
+          <th>Id</th><th>Task</th><th>Created By</th><th>Last Edited By</th>
+        </tr>
+        <% for(var i of data){ %>
+        <tr>
+          <td><%= i.ID %></td><td><%= i.task %></td><td><%= i.createdBy %></td><td><%= i.lastEditedBy %></td>
+        </tr>
+        <% } %>
+      </table>
+    <script>
+      function openTask(task){
+        var i, x, tablink;
+        x = document.getElementsByClassName("task");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        document.getElementById(task).style.display = "block";
+      }
+      </script>
+  </body>
+</html>
