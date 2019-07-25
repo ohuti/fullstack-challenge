@@ -17,8 +17,8 @@ function createTask(task, username){
   global.db.query('insert into entries (task, createdBy, lastEditedBy) values (?,?,?)', [task, username, username]);
 }
 
-function updateTask(id, task) {
-  global.db.query('update entries set task = ? where ID = ?', [task, id]);
+function updateTask(id, task, username) {
+  global.db.query('update entries set task = ?, lastEditedBy = ? where ID = ?', [task, username, id]);
 }
 
 function deleteTask(id){

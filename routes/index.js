@@ -70,7 +70,7 @@ router.post('/create', authMiddleware(), function(req, res, next){
 
 //Update Tasks
 router.post('/update', authMiddleware(), function(req, res, next){
-  sql.updateTask(req.body.id, req.body.task);
+  sql.updateTask(req.body.id, req.body.task, req.user[0].username);
   res.redirect('/to-do');
 })
 
